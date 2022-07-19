@@ -9,7 +9,17 @@ create component
     <p class= "Sales" > Salesforce, Inc. is an American cloud-based software company headquartered in San Francisco, California. It provides customer relationship management software and applications focused on sales, customer service, marketing automation, analytics, and application development. </p>
 </aura:component>
 
+style sheet
 
+.THIS {
+    background-color : pink;
+}
+
+.THIS.Sales{
+   background-color : green;
+    font-size : 10pt;
+    
+}
 
 
 
