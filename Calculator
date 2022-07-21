@@ -1,4 +1,4 @@
-component page
+Component Page
 
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" >
     <aura:attribute name ="input1" type="integer" access="public"></aura:attribute >
@@ -21,7 +21,7 @@ component page
 --------------------------------------------------------------------------------
 
 
-controller page
+Controller Page
 
 ({
 	addClick : function(component, event, helper) {
