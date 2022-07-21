@@ -1,0 +1,74 @@
+Class Page :
+
+public class contactcontrol {
+    @auraenabled
+    public static list<contact> getconlist(){
+        list<contact> con= [select id, name, phone, email from contact where email!= null limit 10];
+        return con;
+        
+    }
+}
+
+----------------------------------------------------------------------------------------------------
+
+Component Page :
+
+<aura:component controller ="contactcontrol" >
+    <aura:attribute name= "contactlist" type="contact[]"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div  class="slds-card__header slds-grid border" >
+        <header >
+            <table style =" border-top:2px solid black;border-right:2px solid black;  ">
+                <thead style="border-bottom:1px solid black; border-left:1px solid black;"  >
+                    <tr>
+                        <th   style="border-bottom:2px solid black; border-left:2px solid black;" scope="col"><span class="slds-truncate ">Name</span></th>
+                        <th style="border-bottom:2px solid black; border-left:2px solid black;" scope="col"><span class="slds-truncate align-center">Email</span></th>
+                        <th style="border-bottom:2px solid black; border-left:2px solid black;" scope="col"><span class="slds-truncate">Phone</span></th>
+                    </tr>
+                </thead>
+                <aura:iteration items="{!v.contactlist}" var="item">
+                    <tbody style="margin:200px;">
+                        
+                    <td  style="border-bottom:2px solid black; border-left:2px solid black; ">{!item.Name}</td>
+                        <td  style="border-bottom:2px solid black; border-left:2px solid black; ">{!item.Email}</td>
+                        <td  style="border-bottom:2px solid black; border-left:2px solid black; "> {!item.Phone}</td>
+                    </tbody></aura:iteration></table>
+        </header>
+    </div>
+    
+</aura:component>
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+Controller Page:
+
+({
+    doInit : function(component, event, helper) {
+        var action = component.get("c.getconlist");
+        
+        
+        
+        action.setCallback (this,
+                            
+                            function(response)
+                            {
+                                var responsevalue  =  response.getReturnValue(); 
+                                // <aura:attribute name ="contactlist" type ="contact[]"/>
+                                component.set('v.contactlist',responsevalue);
+                                console.log(responsevalue);
+                            }
+                            
+                           );
+        
+        $A.enqueueAction(action,false);
+        ///$A.enqueueAction(action);
+    }
+
+ })
+ 
+ -----------------------------------------------------------------------------------
+ 
+ 
+ Application Page :
