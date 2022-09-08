@@ -1,6 +1,6 @@
 Component Page
 
-
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
     <aura:attribute name ="input1" type="integer" access="public"></aura:attribute >
     <aura:attribute name="input2" type="integer" access="public"></aura:attribute>
     <aura:attribute name="answer" type="integer" access="public"></aura:attribute>
