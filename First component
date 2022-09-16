@@ -1,6 +1,6 @@
 create component
 
-
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
 	<h1> salesforce </h1>
     <h2> salesforce </h2>
     <h3> salesforce </h3>
